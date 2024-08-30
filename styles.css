@@ -16,6 +16,7 @@ body {
     border: 5px solid #333;
     background-color: #fff;
     overflow: hidden;
+    position: relative;
 }
 
 .reel {
@@ -24,8 +25,8 @@ body {
     border-left: 1px solid #333;
     background-size: cover;
     background-position: center;
-    position: relative; /* Needed for top property to work */
-    top: 0px; /* Start from the top */
+    position: absolute;
+    top: 0;
 }
 
 #spinButton {

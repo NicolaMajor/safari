@@ -10,7 +10,7 @@ $(document).ready(function() {
     function spinReel(reelId) {
         const animal = getRandomAnimal();
         // Ensure the file path points to the correct directory
-        $(reelId).css('background-image', `url(images/${animal}.jpg)`);
+        $(reelId).css('background-image', `url(images/${animal}.png)`);
         return animal;
     }
 
@@ -24,9 +24,9 @@ $(document).ready(function() {
 
         // Check if the spin count is divisible by 3 or if all results match
         if (spinCount % 3 === 0) {
-            $('#reel1').css('background-image', `url(images/${result1}.jpg)`);
-            $('#reel2').css('background-image', `url(images/${result1}.jpg)`);
-            $('#reel3').css('background-image', `url(images/${result1}.jpg)`);
+            $('#reel1').css('background-image', `url(images/${result1}.png)`);
+            $('#reel2').css('background-image', `url(images/${result1}.png)`);
+            $('#reel3').css('background-image', `url(images/${result1}.png)`);
             $('#message').text('You are a winner!');
         } else if (result1 === result2 && result2 === result3) {
             $('#message').text('You are a winner!');

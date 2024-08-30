@@ -8,7 +8,7 @@ $(document).ready(function() {
     function spinReel(reelId, callback) {
         $(reelId).animate({ top: '-150px' }, 500, function() {
             const animal = getRandomAnimal();
-            $(reelId).css('background-image', `url(images/${animal}.jpg)`);
+            $(reelId).css('background-image', `url(images/${animal}.png)`);
             $(reelId).css('top', '0px'); // Reset position after animation
             if (callback) callback(animal);
         });

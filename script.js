@@ -7,7 +7,7 @@ $(document).ready(function() {
 
     function spinReel(reelId, callback) {
         const animal = getRandomAnimal();
-        $(reelId).css('background-image', `url(images/${animal}.jpg)`);
+        $(reelId).css('background-image', `url(images/${animal}.png)`);
         
         // Animate spinning downwards for 3 seconds
         $(reelId).animate({ top: '-450px' }, 3000, 'linear', function() {

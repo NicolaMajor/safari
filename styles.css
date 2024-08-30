@@ -24,6 +24,8 @@ body {
     border-left: 1px solid #333;
     background-size: cover;
     background-position: center;
+    position: relative; /* Needed for top property to work */
+    top: 0px; /* Start from the top */
 }
 
 #spinButton {
@@ -46,3 +48,4 @@ body {
     font-size: 24px;
     color: green;
 }
+

@@ -6,13 +6,19 @@ $(document).ready(function() {
     }
 
     function spinReel(reelId, callback) {
-        const animal = getRandomAnimal();
-        $(reelId).css('background-image', `url(images/${animal}.png)`);
-        
-        // Animate spinning downwards for 3 seconds
-        $(reelId).animate({ top: '-450px' }, 3000, 'linear', function() {
+        // Create a new animal to ensure it shows during the animation
+        const startAnimal = getRandomAnimal();
+        const endAnimal = getRandomAnimal();
+
+        // Set initial image and start spinning
+        $(reelId).css('background-image', `url(images/${startAnimal}.png)`);
+
+        // Ensure the animation is smooth and fast
+        $(reelId).css('background-image', `url(images/${endAnimal}.jpg)`);
+        $(reelId).animate({ top: '-450px' }, 1500, 'linear', function() {
             $(reelId).css('top', '0px'); // Reset position after animation
-            if (callback) callback(animal);
+            $(reelId).css('background-image', `url(images/${endAnimal}.png)`); // Show final image
+            if (callback) callback(endAnimal);
         });
     }
 

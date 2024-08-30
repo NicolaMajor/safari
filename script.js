@@ -6,9 +6,11 @@ $(document).ready(function() {
     }
 
     function spinReel(reelId, callback) {
-        $(reelId).animate({ top: '-150px' }, 500, function() {
-            const animal = getRandomAnimal();
-            $(reelId).css('background-image', `url(images/${animal}.png)`);
+        const animal = getRandomAnimal();
+        $(reelId).css('background-image', `url(images/${animal}.png)`);
+
+        // Animate spinning downwards for 3 seconds
+        $(reelId).animate({ top: '-450px' }, 3000, 'linear', function() {
             $(reelId).css('top', '0px'); // Reset position after animation
             if (callback) callback(animal);
         });
@@ -17,16 +19,40 @@ $(document).ready(function() {
     $('#spinButton').click(function() {
         $('#message').text('');
 
+        const results = [];
+        let remainingReels = 3;
+
+        // Spin all three reels
         spinReel('#reel1', function(result1) {
-            spinReel('#reel2', function(result2) {
-                spinReel('#reel3', function(result3) {
-                    if (result1 === result2 && result2 === result3) {
-                        $('#message').text('You are a winner!');
-                    } else {
-                        $('#message').text('Try again!');
-                    }
-                });
-            });
+            results.push(result1);
+            remainingReels--;
+            if (remainingReels === 0) {
+                checkResults(results);
+            }
         });
+
+        spinReel('#reel2', function(result2) {
+            results.push(result2);
+            remainingReels--;
+            if (remainingReels === 0) {
+                checkResults(results);
+            }
+        });
+
+        spinReel('#reel3', function(result3) {
+            results.push(result3);
+            remainingReels--;
+            if (remainingReels === 0) {
+                checkResults(results);
+            }
+        });
+
+        function checkResults(results) {
+            if (results[0] === results[1] && results[1] === results[2]) {
+                $('#message').text('Hip Hippo Horay! You are a Winner!');
+            } else {
+                $('#message').text('Sorry, you didn\'t win this time :(');
+            }
+        }
     });
 });

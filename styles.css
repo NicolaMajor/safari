@@ -25,8 +25,9 @@ body {
     border-left: 1px solid #333;
     background-size: cover;
     background-position: center;
-    position: absolute;
+    position: relative; /* Needed for top property to work */
     top: 0;
+    background-repeat: repeat; /* Ensure images repeat */
 }
 
 #spinButton {

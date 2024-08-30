@@ -23,6 +23,7 @@ body {
     height: 150px;
     border-left: 1px solid #333;
     background-size: cover;
+    background-position: center;
 }
 
 #spinButton {

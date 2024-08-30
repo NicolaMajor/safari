@@ -7,8 +7,8 @@ $(document).ready(function() {
 
     function spinReel(reelId, callback) {
         const animal = getRandomAnimal();
-        $(reelId).css('background-image', `url(images/${animal}.png)`);
-
+        $(reelId).css('background-image', `url(images/${animal}.jpg)`);
+        
         // Animate spinning downwards for 3 seconds
         $(reelId).animate({ top: '-450px' }, 3000, 'linear', function() {
             $(reelId).css('top', '0px'); // Reset position after animation
@@ -22,7 +22,7 @@ $(document).ready(function() {
         const results = [];
         let remainingReels = 3;
 
-        // Spin all three reels
+        // Spin all three reels with a slight delay to make them spin separately
         spinReel('#reel1', function(result1) {
             results.push(result1);
             remainingReels--;
@@ -31,21 +31,25 @@ $(document).ready(function() {
             }
         });
 
-        spinReel('#reel2', function(result2) {
-            results.push(result2);
-            remainingReels--;
-            if (remainingReels === 0) {
-                checkResults(results);
-            }
-        });
+        setTimeout(() => {
+            spinReel('#reel2', function(result2) {
+                results.push(result2);
+                remainingReels--;
+                if (remainingReels === 0) {
+                    checkResults(results);
+                }
+            });
+        }, 100); // Delay for the second reel
 
-        spinReel('#reel3', function(result3) {
-            results.push(result3);
-            remainingReels--;
-            if (remainingReels === 0) {
-                checkResults(results);
-            }
-        });
+        setTimeout(() => {
+            spinReel('#reel3', function(result3) {
+                results.push(result3);
+                remainingReels--;
+                if (remainingReels === 0) {
+                    checkResults(results);
+                }
+            });
+        }, 200); // Delay for the third reel
 
         function checkResults(results) {
             if (results[0] === results[1] && results[1] === results[2]) {
